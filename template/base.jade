@@ -1,0 +1,74 @@
+html(lang="zh-cn")
+	+i18n('Home', '首页', 'zh_cn')
+	+i18n('Albums', '相册', 'zh_cn')
+	+i18n('Category', '分类', 'zh_cn')
+	+i18n('Archive', '归档', 'zh_cn')
+	+i18n('Tags', '标签', 'zh_cn')
+	+i18n('About', '关于', 'zh_cn')
+	+i18n('Links', '友链', 'zh_cn')
+	+i18n('Search', '搜索', 'zh_cn')
+	head
+		+h.headers
+		meta(name="description", content="")
+		meta(name="keywords", content="")
+		+h.load('font', '/fb_static/lib/jquery.js', '/template/css/style.scss', '/template/css/basic.css')
+		link(rel='alternate', type='application/rss+xml', title='atom 1.0', href='/feed')
+
+		if not has('favicon.icon')
+			link(rel="shortcut icon", href="/template/favicon.ico")
+
+		title
+			block title
+				site.configs.sub_title
+
+	body
+		#layout.pure-g-r
+			.sidebar.pure-u
+				#avatar
+					a(href="/", hreflang="zh")
+						img.logo(src="/template/avatar.jpg?width=240&height=240&fixed=true", alt=site.title, title="Homepage")
+				h1.site_name
+					a(href="/")= site.configs.sub_title
+				#switch
+					img(src="/template/img/menu.png", alt="menu icon")
+				ul.nav
+					if has('about.md')
+						li
+							a(href='/about')=_('About')
+					li
+						a(href='/category')=_('Category')
+					if site.tags
+						li
+							a(href='/tag')=_('Tags')
+					li
+						a(href='/archive')=_('Archive')
+					li#search
+					 	a(href="#")= _('Search')
+				.search-bar
+					input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+					a(class="fa fa-search", href="javascript:search()")
+					a(href="", class="fa fa-google", name="sa", value="", target="_blank", title="Google站内", onmouseover="javascript:this.href='https://cse.google.com/cse?cx=014866320412706777795%3Aver7bgo_9s8&q='+ document.getElementById('search-bar').value;")
+				.infobar
+					ul#bar.baro
+						li.bar
+							a(href='/feed',title='RSS') 
+								i(class="fa fa-rss")
+			.content_body.pure-u-1
+				if request.is_login == false
+					#login
+						a(class="fa fa-power-off", href="/login")
+				if request.is_login == true
+					#login
+						a(class="fa fa-power-off", href="/logout")
+				#main
+					block content
+				#go-top
+					a(href="javascript:void(0);",onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;")
+						i(class="fa fa-arrow-up")
+				#footer
+					| Powered by
+					a(href='http://www.Bitcron.com') Bitcron&nbsp;
+					|
+					span= "友情链接:"
+					a(href="http://oribe.blog.163.com/")= "a5211083"
+		load("/template/js/scripts.js")
