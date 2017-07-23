@@ -1,11 +1,11 @@
-+i18n('Pre Page', '上一页', 'zh_cn')
-+i18n('Next Page', '下一页', 'zh_cn')
-+i18n('Already First', '已是第一页', 'zh_cn')
-+i18n('Already Last', '已是最后一页', 'zh_cn')
 mixin make_paginator()
 	if pager.has_pre or pager.has_next
 		div.clear
 		.pager
+			+i18n('Pre Page', '上一页', 'zh_cn')
+			+i18n('Next Page', '下一页', 'zh_cn')
+			+i18n('Already First', '已是第一页', 'zh_cn')
+			+i18n('Already Last', '已是最后一页', 'zh_cn')
 			if pager.has_pre
 				a.pre(href=pager.pre_page_url)='Pre Page'
 			else
