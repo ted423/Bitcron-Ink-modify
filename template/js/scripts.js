@@ -59,7 +59,27 @@ function displayFix() { //判断链接是否超出一行，是的话调整为1�
 
 		}
 	})
+	//code add button
+	$('pre>code,.codehilite>pre').each(function() {
+		var btn = document.createElement("span");
+		btn.className = 'select-btn'
+		btn.innerHTML = '<i class="fa fa-code" title="点击全选"></i>';
+		btn.onclick = function() {
+			var target = this.previousSibling;
+			var range = document.createRange();
+			range.setStart(target, 0);
+			range.setEnd(target, target.childNodes.length);
+			document.getSelection().removeAllRanges();
+			document.getSelection().addRange(range);
+		}
+		var btnTop=$(this).position().top,btnLeft=$(this).position().left + this.offsetWidth - 17;
+		btn.style.top= btnTop + "px";
+		btn.style.left= btnLeft + "px";
+		$(btn).insertAfter(this);
+		$(this).resize(function(){$('.select-btn').remove();displayFix();console.log("displayFix");});
+	})
 }
+
 
 /* search bar toggle */
 $(document).ready(function() {
@@ -111,23 +131,6 @@ $(function() {
 	});
 });
 
-$(function() {
-	//code add button
-	$('pre>code,.codehilite pre').each(function() {
-		var btn = document.createElement("span");
-		btn.className = 'select-btn'
-		btn.innerHTML = '<i class="fa fa-code" title="点击全选"></i>';
-		btn.onclick = function() {
-			var target = this.previousSibling;
-			var range = document.createRange();
-			range.setStart(target, 0);
-			range.setEnd(target, target.childNodes.length);
-			document.getSelection().removeAllRanges();
-			document.getSelection().addRange(range);
-		}
-		$(btn).insertAfter(this);
-	})
-});
 
 (function() {
 	//add onedrive notice
@@ -170,5 +173,6 @@ $(function() {
 window.onload = displayFix();
 
 window.onresize = function() {
+	$('.select-btn').remove();
 	displayFix();
 };

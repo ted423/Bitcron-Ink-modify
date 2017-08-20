@@ -413,16 +413,21 @@ pre br{
 }
 
 /*pygments*/
-table.codehilitetable{
-	border:none;
+table.codehilite.highlighttable{
+	border: 1px solid #3f3f3f;
 	margin: 0;
+}
+.codehilite.highlight{
+	display:inline-block;
+}
+table .codehilite.highlight{
+	display:block;
 }
 
 
-.codehilitetable td{
+.codehilite.highlighttable td{
 	border: none;
 	padding: 0;
-
 }
 
 
@@ -432,7 +437,7 @@ table.codehilitetable{
 	width: auto; 
 }
 
-.codehilitetable tr th, .codehilitetable tr td {
+.codehilite.highlighttable tr th, .codehilite.highlighttable tr td {
 	padding: 0;
 }
 
@@ -441,9 +446,7 @@ table.codehilitetable{
 	padding: 9px;
 }
 
-.linenodiv pre{border-right:none;}
-.codehilite code, .codehilite pre{display: inline-block;word-break:break-word;color:#fdce93;background-color:#3f3f3f;padding:10px 15px;border-radius:3px;text-shadow:none;overflow: auto;}
-td.linenos{border:1px solid #e0e0e0;}
+.codehilite>code, .codehilite>pre{word-break:break-word;color:#fdce93;background-color:#3f3f3f;padding:10px 15px;text-shadow:none;overflow: auto;}
 .codehilite .hll{background-color:#222;}
 .codehilite .c{color:#7f9f7f;}
 .codehilite .err{color:#e37170;background-color:#3d3535;}
@@ -621,9 +624,8 @@ a.fa.fa-google{
 	color:yellow;
 }
 .select-btn{
-	left: -15px;
 	font-size: 10px !important;
-	position: relative;
+	position: absolute;
 	cursor:pointer;
 	display: inline-block;
 	vertical-align: top;
