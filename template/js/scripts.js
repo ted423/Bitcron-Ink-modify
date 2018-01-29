@@ -148,7 +148,7 @@ $(function() {
 			if (li.firstChild.nodeName == "#text") p.innerHTML = li.firstChild.textContent;
 			else p.innerHTML = li.firstChild.outerHTML;
 			that = li.firstChild;
-			while (that.nextSibling && (that.nextSibling.nodeName == "#text" || getComputedStyle(that.nextSibling).display == "inline")) { //处理文字+inline元素的情况
+			while (that.nextSibling && (that.nextSibling.nodeName == "#text" ||that.nextSibling.nodeName == "P"|| getComputedStyle(that.nextSibling).display == "inline")) { //处理文字+inline元素的情况，另，bitcron会很奇葩的在li里生成一个text的回车再加上P元素
 				if (that.nextSibling.nodeName == "#text") p.innerHTML += that.nextSibling.textContent;
 				else p.innerHTML += that.nextSibling.outerHTML;
 				$(that.nextSibling).remove();
