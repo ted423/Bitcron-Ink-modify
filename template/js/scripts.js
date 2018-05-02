@@ -54,7 +54,7 @@ function displayFix() { //判断链接是否超出一行，是的话调整为1�
 	})
 	$('pre').each(function() {
 		if (window.outerHeight >= screen.availHeight && window.outerWidth >= screen.availWidth /*FF、IE下会大16*/ ) this.style.width = "";
-		if (this.getClientRects()[0].width > document.getElementsByClassName('post')[0].getClientRects()[0].width) {
+		if (this.getClientRects()[0] && this.getClientRects()[0].width > document.getElementsByClassName('post')[0].getClientRects()[0].width) {
 			this.style.width = "100%";
 
 		}
