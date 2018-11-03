@@ -8,10 +8,10 @@ function displayFix() { //判断链接是否超出一行，是的话调整为1�
 	$("a").each(function() {
 		var reg = /((https?)|(ed2k):\/\/)|(magnet\:\?xt\=urn\:btih\:)/i;
 		if (this.getClientRects()[1] && reg.test(this.textContent)) {
-			length = this.getClientRects()[0].width / 11;
+			length = this.getClientRects()[0].width / 12;
 			max = this.getClientRects().length;
 			for (i = 1; i < max; i++) {
-				temp = this.getClientRects()[i].width / 11;
+				temp = this.getClientRects()[i].width / 12;
 				if (temp > length) length = temp;
 			}
 			//由于取href的值，需要重新编码
@@ -34,10 +34,10 @@ function displayFix() { //判断链接是否超出一行，是的话调整为1�
 			}
 			this.textContent = tempS;
 			if (this.getClientRects()[1] && reg.test(this.textContent)) {
-				length = this.getClientRects()[0].width / 11;
+				length = this.getClientRects()[0].width / 12;
 				max = this.getClientRects().length;
 				for (i = 1; i < max; i++) {
-					temp = this.getClientRects()[i].width / 11;
+					temp = this.getClientRects()[i].width / 12;
 					if (temp > length) length = temp;
 				}
 				//由于取href的值，需要重新编码
@@ -134,7 +134,7 @@ $(function() {
 
 (function() {
 	//add onedrive notice
-	$("a[href*='https://onedrive.live.com']").attr('title', '可能需要使用host才能正常访问');
+	$("a[href*='https://onedrive.live.com'],a[href*='https://1drv.ms'],a[href*='https://mega.nz']").attr('title', '可能需要翻墙');
 	//ed2k UTF-8再编码
 	$("a[href*='ed2k://']").each(function() {
 		this.href = decodeURIComponent(this.href)
@@ -148,7 +148,7 @@ $(function() {
 			if (li.firstChild.nodeName == "#text") p.innerHTML = li.firstChild.textContent;
 			else p.innerHTML = li.firstChild.outerHTML;
 			that = li.firstChild;
-			while (that.nextSibling && (that.nextSibling.nodeName == "#text" ||that.nextSibling.nodeName == "P"|| getComputedStyle(that.nextSibling).display == "inline")) { //处理文字+inline元素的情况，另，bitcron会很奇葩的在li里生成一个text的回车再加上P元素
+			while (that.nextSibling && (that.nextSibling.nodeName == "#text" ||that.nextSibling.nodeName == "P"|| getComputedStyle(that.nextSibling).display == "inline")) { //处理文字+inline元素的情况
 				if (that.nextSibling.nodeName == "#text") p.innerHTML += that.nextSibling.textContent;
 				else p.innerHTML += that.nextSibling.outerHTML;
 				$(that.nextSibling).remove();
@@ -175,4 +175,10 @@ window.onload = displayFix();
 window.onresize = function() {
 	$('.select-btn').remove();
 	displayFix();
+};
+
+document.onreadystatechange = function() {
+	if (document.readyState == "complete") {
+		displayFix();
+	}
 };
