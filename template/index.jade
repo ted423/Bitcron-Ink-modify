@@ -3,7 +3,6 @@ extends base
 block title
 	{{ site.title }}
 
-
 block content
 	if request.path == '/' or request.path not in ['/category', '/category/']
 		+make_posts_list()

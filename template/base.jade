@@ -10,8 +10,8 @@ html(lang="zh-cn")
 	head
 		+h.headers
 		meta(name="description", content="")
-		meta(name="keywords", content="")
-		+h.load('font', '/fb_static/lib/jquery.js', '/template/css/style.scss', '/template/css/basic.css')
+		+h.load('/fb_static/lib/jquery.js', '/template/css/style.scss', '/template/css/basic.css')
+		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.1.0/css/all.css', integrity='sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt', crossorigin='anonymous')
 		link(rel='alternate', type='application/rss+xml', title='atom 1.0', href='/feed')
 
 		if not has('favicon.icon')
@@ -20,7 +20,6 @@ html(lang="zh-cn")
 		title
 			block title
 				site.configs.sub_title
-
 	body
 		#layout.pure-g-r
 			.sidebar.pure-u
@@ -47,15 +46,8 @@ html(lang="zh-cn")
 				.search-bar
 					input#search-bar(type="text", name="q", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
 					a(class="fa fa-search", href="javascript:search()")
-					a(href="", class="fa fa-google", name="sa", value="", target="_blank", title="Google站内", onmouseover="javascript:this.href='https://cse.google.com/cse?cx=014866320412706777795%3Aver7bgo_9s8&q='+ document.getElementById('search-bar').value;")
 				.infobar
 					ul#bar.baro
-						li.bar
-							a(href='/post/code/github',title="Github") 
-								i(class="fa fa-github")
-						li.bar
-							a(href='',title="Steam") 
-								i(class="fa fa-steam-square")
 						li.bar
 							a(href='/feed',title='RSS') 
 								i(class="fa fa-rss")
@@ -72,9 +64,6 @@ html(lang="zh-cn")
 					a(href="javascript:void(0);",onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;")
 						i(class="fa fa-arrow-up")
 				#footer
-					| Powered by
-					a(href='http://www.farbox.com') FarBox&nbsp;
-					|
 					span= "友情链接:"
 		load("/template/js/jquery.ba-resize.min.js")
 		load("/template/js/scripts.js")
