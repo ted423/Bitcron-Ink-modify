@@ -3,9 +3,9 @@ block title
 	| 404 | {{site.title}}
 block content
 	.detail-post
-		h2= '对不起，您访问的页面不存在。' if lang=='zh_cn' else 'Sorry, this page is not found'
+		h2= '对不起，您访问的页面不存在。很大可能是因为我更改了文件所在路径，建议使用搜索' if request.lang=='zh_cn' else 'Sorry, this page is not found, maybe it change path, please use search'
 		.post_body
-			p= '您可以尝试搜索：' if lang=='zh_cn' else 'Maybe you need to search:'
+			p= '您可以尝试搜索：' if request.lang=='zh_cn' else 'Maybe you need to search:'
 				.search-bar
 					input(type="text", id='search-bar-2', value="", onkeyup="if (event.keyCode == 13) search_in_page();")
 					a(href="javascript:search_in_page()")
