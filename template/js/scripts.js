@@ -59,6 +59,7 @@ function displayFix() { //判断链接是否超出一行，是的话调整为1�
 
 		}
 	})
+	$('.select-btn').remove();
 	//code add button
 	$('pre>code,.codehilite>pre').each(function() {
 		var btn = document.createElement("span");
@@ -173,7 +174,6 @@ $(function() {
 window.onload = displayFix();
 
 window.onresize = function() {
-	$('.select-btn').remove();
 	displayFix();
 };
 
