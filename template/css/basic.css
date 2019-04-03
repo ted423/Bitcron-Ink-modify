@@ -653,15 +653,15 @@ ol ol{
 	padding-bottom: 0px;
 }
 
-ol ol>li:first-of-type>p{
+ol ol>li:first-of-type>p,ol ol>li:first-of-type>span{
 	margin-top: 0px !important;
 }
 
-ol ol>li:last-of-type>p{
+ol ol>li:last-of-type>p,ol ol>li:first-of-type>span{
 	margin-bottom: 0px !important;
 }
 
-ol>li>p:first-child,ol>li>h6{
+ol>li>p:first-child,ol>li>span:first-child,ol>li>h6{
     position: relative;
     padding: .2em 1.3em;
     *padding: .4em;
@@ -674,11 +674,11 @@ ol>li>p:first-child,ol>li>h6{
     transition: all .3s ease-out;	
 }
 
-ol>li>p:first-child:hover:before,ol>li>h6:hover:before{
+ol>li>p:first-child:hover:before,ol>li>span:first-child:hover:before,ol>li>h6:hover:before{
     transform: rotate(360deg);	
 }
 
-ol>li>p:first-child:before,ol>li>h6:before{
+ol>li>p:first-child:before,ol>li>h6:before,ol>li>span:first-child:before{
     content: counter(li);
     counter-increment: li;
     position: absolute;	
