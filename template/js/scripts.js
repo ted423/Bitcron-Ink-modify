@@ -4,54 +4,7 @@ function search() {
 	else return false;
 }
 
-function displayFix() { //判断链接是否超出一行，是的话调整为1行
-	$("a").each(function() {
-		var reg = /((https?)|(ed2k):\/\/)|(magnet\:\?xt\=urn\:btih\:)/i;
-		if (this.getClientRects()[1] && reg.test(this.textContent)) {
-			length = this.getClientRects()[0].width / 12;
-			max = this.getClientRects().length;
-			for (i = 1; i < max; i++) {
-				temp = this.getClientRects()[i].width / 12;
-				if (temp > length) length = temp;
-			}
-			//由于取href的值，需要重新编码
-			var a = this.href.split(/%(?![A-Fa-f0-9]{2})/);
-			var tempS = "";
-			for (i = 0; i < a.length; i++) {
-				tempS += (decodeURIComponent(a[i]));
-				if (i != a.length - 1)
-					tempS += "%";
-			}
-			this.textContent = tempS.slice(0, length) + '...';
-		} else if (this.textContent.substr(-3).indexOf('...') != -1 && reg.test(this.textContent)) { //先还原，然后再次调整
-			//由于取href的值，需要重新编码
-			var array = this.href.split(/%(?![A-Fa-f0-9]{2})/);
-			var tempS = "";
-			for (i = 0; i < array.length; i++) {
-				tempS += (decodeURIComponent(array[i]));
-				if (i != array.length - 1)
-					tempS += "%";
-			}
-			this.textContent = tempS;
-			if (this.getClientRects()[1] && reg.test(this.textContent)) {
-				length = this.getClientRects()[0].width / 12;
-				max = this.getClientRects().length;
-				for (i = 1; i < max; i++) {
-					temp = this.getClientRects()[i].width / 12;
-					if (temp > length) length = temp;
-				}
-				//由于取href的值，需要重新编码
-				var a = this.href.split(/%(?![A-Fa-f0-9]{2})/);
-				var tempS = "";
-				for (i = 0; i < a.length; i++) {
-					tempS += (decodeURIComponent(a[i]));
-					if (i != a.length - 1)
-						tempS += "%";
-				}
-				this.textContent = tempS.slice(0, length) + '...';
-			}
-		}
-	})
+function displayFix() { //窗口大小变更调整
 	$('pre').each(function() {
 		if (window.outerHeight >= screen.availHeight && window.outerWidth >= screen.availWidth /*FF、IE下会大16*/ ) this.style.width = "";
 		if (this.getClientRects()[0] && this.getClientRects()[0].width > document.getElementsByClassName('post')[0].getClientRects()[0].width) {
@@ -59,8 +12,8 @@ function displayFix() { //判断链接是否超出一行，是的话调整为1�
 
 		}
 	})
-	$('.select-btn').remove();
 	//code add button
+	$('.select-btn').remove();
 	$('pre>code,.codehilite>pre').each(function() {
 		var btn = document.createElement("span");
 		btn.className = 'select-btn'

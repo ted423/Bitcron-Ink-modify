@@ -349,10 +349,18 @@ td ul{
 	font-weight:normal;
 	padding-left: 5px;
 }
-.post_body>ul{
+.post_body > ul{
 	max-width: calc(100% - 300px);
-
 }	
+
+li.md_li > span {
+	display:block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
 h2.title > a{
 	display:block;
 	white-space:nowrap;/*设置不折行*/
