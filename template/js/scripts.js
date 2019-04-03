@@ -88,13 +88,13 @@ $(function() {
 
 (function() {
 	//add onedrive notice
-	$("a[href*='https://onedrive.live.com'],a[href*='https://1drv.ms'],a[href*='https://mega.nz']").attr('title', '可能需要翻墙');
+	$("a[href*='https://www.dropbox.com'],a[href*='https://1drv.ms'],a[href*='https://mega.nz']").attr('title', '可能需要翻墙');
 	//ed2k UTF-8再编码
 	$("a[href*='ed2k://']").each(function() {
 		this.href = decodeURIComponent(this.href)
 	});
 
-	//ol fix
+	/*ol fix
 	lis = document.querySelectorAll('ol>li');
 	[].forEach.call(lis, function(li) {
 		if (li.firstChild.nodeName == "#text" || getComputedStyle(li.firstChild).display == "inline") {
@@ -114,7 +114,7 @@ $(function() {
 			p = document.createElement('p');
 			if (li.firstChild) li.insertBefore(p, li.firstChild);
 		}
-	});
+	});*/
 	$('li>code').each(function() {
 		if ($(this).text().substring(0, 1) == "\n") {
 			pre = document.createElement("pre");

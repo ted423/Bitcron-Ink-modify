@@ -353,7 +353,7 @@ td ul{
 	max-width: calc(100% - 300px);
 }	
 
-li.md_li > span {
+ul li.md_li > span {
 	display:block;
 	overflow: hidden;
 	white-space: nowrap;
@@ -651,6 +651,10 @@ ol{
 
 ol ol{
 	padding-bottom: 0px;
+}
+
+ol > li > span {
+	display:block;
 }
 
 ol ol>li:first-of-type>p,ol ol>li:first-of-type>span{
