@@ -354,10 +354,14 @@ td ul{
 }	
 
 ul li.md_li > span {
-	display:block;
+	display:inline-block;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+    width: 90%;
+    top: 1px;
+    position: relative;
+    line-height: 1;
 }
 
 
