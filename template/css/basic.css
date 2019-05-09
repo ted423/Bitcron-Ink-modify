@@ -100,7 +100,8 @@ p {
 }
 
 p.md_block {
-    padding: 5px 0;
+	padding: 0 !important;
+    margin: 0 !important;
 }
 
 pre{
@@ -354,6 +355,12 @@ td ul{
 }	
 
 ul li.md_li > span {
+	display:block;
+	padding: 5px 0;
+}
+
+
+ul li.md_li > span > a{
 	display:inline-block;
 	overflow: hidden;
 	white-space: nowrap;
@@ -363,7 +370,6 @@ ul li.md_li > span {
     position: relative;
     line-height: 1;
 }
-
 
 h2.title > a{
 	display:block;
