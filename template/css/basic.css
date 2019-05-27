@@ -366,9 +366,11 @@ ul li.md_li > span > a{
 	white-space: nowrap;
 	text-overflow: ellipsis;
     width: 90%;
-    top: 1px;
-    position: relative;
-    line-height: 1;
+	vertical-align:top;
+}
+
+ul li.md_li > span > a[href^="https://pan.baidu.com"]{
+    width: auto !important;
 }
 
 h2.title > a{
