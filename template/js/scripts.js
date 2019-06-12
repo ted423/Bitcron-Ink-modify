@@ -9,11 +9,19 @@ function displayFix() { //窗口大小变更调整
 		if (window.outerHeight >= screen.availHeight && window.outerWidth >= screen.availWidth /*FF、IE下会大16*/ ) this.style.width = "";
 		if (this.getClientRects()[0] && this.getClientRects()[0].width > document.getElementsByClassName('post')[0].getClientRects()[0].width) {
 			this.style.width = "100%";
-
 		}
 	})
 	//code add button
 	$('.select-btn').remove();
+	addSelectBtn();
+}
+
+$('pre>code,.codehilite>pre').resize(function() {//resize事件单独添加以避免添加过多的resize事件
+	displayFix();
+	console.log("displayFix");
+});
+
+function addSelectBtn() {
 	$('pre>code,.codehilite>pre').each(function() {
 		var btn = document.createElement("span");
 		btn.className = 'select-btn'
@@ -26,13 +34,14 @@ function displayFix() { //窗口大小变更调整
 			document.getSelection().removeAllRanges();
 			document.getSelection().addRange(range);
 		}
-		var btnTop=$(this).position().top,btnLeft=$(this).position().left + this.offsetWidth - 17;
-		btn.style.top= btnTop + "px";
-		btn.style.left= btnLeft + "px";
+		var btnTop = $(this).position().top,
+			btnLeft = $(this).position().left + this.offsetWidth - 17;
+		btn.style.top = btnTop + "px";
+		btn.style.left = btnLeft + "px";
 		$(btn).insertAfter(this);
-		$(this).resize(function(){$('.select-btn').remove();displayFix();console.log("displayFix");});
 	})
 }
+
 
 
 /* search bar toggle */
@@ -90,7 +99,7 @@ $(function() {
 	//add onedrive notice
 	$("a[href*='https://www.dropbox.com'],a[href*='https://1drv.ms'],a[href*='https://mega.nz']").attr('title', '可能需要翻墙');
 	//ed2k UTF-8再编码
-	$("a[href*='ed2k://']").each(function() {
+	$("a[href*='ed2k://']").attr('title', '本站提供只支持离线，并且未必能离线成功').each(function() {
 		this.href = decodeURIComponent(this.href)
 	});
 
