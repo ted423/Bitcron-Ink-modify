@@ -365,7 +365,7 @@ ul li.md_li > span > a:only-child{
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-    width: 90%;
+    max-width: 90%;
 	vertical-align:top;
 }
 
