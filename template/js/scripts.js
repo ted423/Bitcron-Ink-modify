@@ -16,7 +16,7 @@ function displayFix() { //窗口大小变更调整
 	addSelectBtn();
 }
 
-$('pre>code,.codehilite>pre').resize(function() {//resize事件单独添加以避免添加过多的resize事件
+$('pre>code,.codehilite>pre,#out').resize(function() {//resize事件单独添加以避免添加过多的resize事件
 	displayFix();
 	console.log("displayFix");
 });

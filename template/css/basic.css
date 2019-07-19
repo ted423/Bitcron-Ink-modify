@@ -360,7 +360,7 @@ ul li.md_li > span {
 }
 
 
-ul li.md_li > span > a{
+ul li.md_li > span > a:only-child{
 	display:inline-block;
 	overflow: hidden;
 	white-space: nowrap;
@@ -611,6 +611,10 @@ dl, menu, ol, ul{
 
 .text-hide a{color: #F6F6F6 !important;}
 
+.md_line{
+	margin: 9px 0px;
+    display: block;
+}
 /*Lrc-Parser*/
 .out pre{
 	border-radius: 5px;
